@@ -1,3 +1,6 @@
 [submodule "reddit-it-memes-filtering-bot"]
 	path = reddit-it-memes-filtering-bot
 	url = https://github.com/avkaz/reddit-it-memes-filtering-bot.git
+[submodule "reddit-it-memes-automatic-posting-telegram-bot"]
+	path = reddit-it-memes-automatic-posting-telegram-bot
+	url = https://github.com/avkaz/reddit-it-memes-automatic-posting-telegram-bot.git
