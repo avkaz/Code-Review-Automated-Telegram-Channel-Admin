@@ -4,3 +4,6 @@
 [submodule "reddit-it-memes-automatic-posting-telegram-bot"]
 	path = reddit-it-memes-automatic-posting-telegram-bot
 	url = https://github.com/avkaz/reddit-it-memes-automatic-posting-telegram-bot.git
+[submodule "reddit-r.ProgrammerHumor-python-selectolax-scrapper"]
+	path = reddit-r.ProgrammerHumor-python-selectolax-scrapper
+	url = https://github.com/avkaz/reddit-r.ProgrammerHumor-python-selectolax-scrapper.git
