@@ -87,7 +87,7 @@ Each bot has a distinct role, contributing to a seamless automated content curat
 
 ## Bot Configuration
 
-Each bot has specific configuration parameters set in its respective `main.py` or configuration files.
+Each bot has specific configuration parameters set in its respective `main.py` or configuration files.  **More detailed setup instructions for each bot can be found in the README files of their respective repositories.**
 
 1.  **Reddit Memes Filtering Bot:**
     *   Firebase API Key: `key.json` in the project root.
