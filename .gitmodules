@@ -1,0 +1,3 @@
+[submodule "reddit-it-memes-filtering-bot"]
+	path = reddit-it-memes-filtering-bot
+	url = https://github.com/avkaz/reddit-it-memes-filtering-bot.git
