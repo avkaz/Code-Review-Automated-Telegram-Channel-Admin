@@ -1,0 +1,109 @@
+version: '3.8'
+
+services:
+ # App 1
+  python-selectolax-scrapper:
+    build: ./reddit-r.ProgrammerHumor-python-selectolax-scrapper
+    restart: always
+    depends_on:
+      - db
+    environment:
+      DB_USER: 'avkaz'
+      DB_PASSWORD: 'avkazz_pass'
+      DB_HOST: 'db'
+      DB_PORT: '5432'
+      DB_NAME: 'reddit_items'
+    networks:
+      - app-network
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "3" 
+ # App 2
+  memes-automatic-posting-telegram-bot:
+    build: ./reddit-it-memes-automatic-posting-telegram-bot
+    restart: always
+    volumes:
+      - media:/app/media
+    depends_on:
+      - db
+    environment:
+      DB_USER: 'avkaz'
+      DB_PASSWORD: 'avkazz_pass'
+      DB_HOST: 'db'
+      DB_PORT: '5432'
+      DB_NAME: 'reddit_items'
+    networks:
+      - app-network
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "3"
+  # App 3
+  memes-filtering-bot:
+    build: ./reddit-it-memes-filtering-bot
+    restart: always
+    volumes:
+      - media:/app/media
+    depends_on:
+      - db
+    environment:
+      DB_USER: 'avkaz'
+      DB_PASSWORD: 'avkazz_pass'
+      DB_HOST: 'db'
+      DB_PORT: '5432'
+      DB_NAME: 'reddit_items'
+    networks:
+      - app-network
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "3"
+  # App 4
+  comments_delete_bot:
+    build: ./comments_delete_bot
+    restart: always
+    networks:
+      - app-network
+    logging:
+      driver: json-file
+      options:
+        max-size: "100m"
+        max-file: "3"
+  # Database
+  db:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: avkazz_pass
+      POSTGRES_USER: avkaz
+    volumes:
+      - /home/avkaz/database:/var/lib/postgresql/data
+      - /home/avkaz/database_backups:/backups
+    networks:
+      - app-network
+    ports:
+      - "127.0.0.1:5432:5432/tcp"
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  media:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/media
+  postgres_data:
+    driver: local
